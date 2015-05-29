@@ -1,0 +1,110 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+}
+body {
+  font: 1em 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.wrapper {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+.toolbar {
+  height: 44px;
+  background-color: #f7f7f7;
+  border-top: 1px solid #acacac;
+  display: -webkit-flex;
+  -webkit-flex-flow: row nowrap;
+  -webkit-align-items: center;
+}
+
+.button-photo {
+  -webkit-flex: 0 0 25px;
+  width: 25px;
+  height: 19px;
+  margin: 0 10px;
+  background: url(i/photo.png) no-repeat;
+  background-size: cover;
+}
+
+.button-send {
+  -webkit-flex: 0 0 55px;
+  text-align: center;
+  font-weight: 500;
+  color: #2687fc;
+}
+.button-send[disabled="true"] {
+  color: #8e8e93;
+}
+
+.search {
+  -webkit-appearance: none;
+  width: -webkit-fill-available;
+  font-size: 1em;
+  font-family: inherit;
+  border: 1px solid #c7c7cc;
+  border-radius: 5px;
+  background-color: #fafafa;
+  box-shadow: none;
+  height: 30px;
+  padding: 0 8px;
+  box-sizing: border-box;
+  outline: 0 none;
+}
+
+.messages {
+  padding: 12px;
+  -webkit-transition: height 200ms ease-out;
+}
+
+.message {
+  width: -webkit-fit-content;
+  max-width: 75%;
+  border-radius: 20px;
+  padding: 10px 15px;
+  margin: 1px 0 0;
+  box-sizing: border-box;
+  background-color: #e5e5ea;
+  position: relative;
+  z-index: 1;
+}
+
+.message_ours {
+  margin-left: auto;
+  color: #fff;
+  background-image: -webkit-linear-gradient(90deg, rgba(37,133,252,1) 0,
+                                                   rgba(37,133,252,.5) 500px);
+}
+.message_theirs {
+  margin-right: auto;
+}
+
+.message_theirs + .message_ours,
+.message_ours + .message_theirs {
+  margin-top: 10px;
+}
+
+.message__tail {
+  position: absolute;
+  z-index: 0;
+  bottom: 0;
+  width: 22px;
+}
+.message_ours .message__tail {
+  right: -6px;
+}
+.message_ours .message__tail path {
+  fill: rgb(37,133,252);
+}
+.message_theirs .message__tail {
+  left: -6px;
+}
+
