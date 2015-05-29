@@ -108,3 +108,10 @@ body {
   left: -6px;
 }
 
+.message_waiting {
+  min-width: 59px;
+  min-height: 38px;
+  font-size: 0;
+  background: url(i/writin.gif) 50% 50% no-repeat;
+  background-size: cover;
+}
