@@ -76,7 +76,9 @@ body {
   box-sizing: border-box;
   background-color: #e5e5ea;
   margin-bottom: 0;
-  -webkit-transition: margin 500ms ease-out;
+  position: relative;
+  z-index: 1;
+  -webkit-transition: margin 200ms ease-out;
 }
 
 .message-enter {
