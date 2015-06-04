@@ -76,6 +76,7 @@ body {
   box-sizing: border-box;
   background-color: #e5e5ea;
   margin-bottom: 0;
+  overflow: hidden;
   position: relative;
   z-index: 1;
   -webkit-transition: margin 200ms ease-out;
@@ -129,4 +130,32 @@ body {
   padding: 0;
   border-radius: 0;
   margin-left: -4px;
+}
+
+.message_with_image,
+.message_with_video {
+  padding: 0;
+}
+.message_with_image {
+  display: inline-block;
+}
+
+.message_with_image .message__tail,
+.message_with_video .message__tail {
+  display: none;
+}
+
+.message_with_video::before {
+  content: '';
+  display: block;
+  width: 27px;
+  height: 33px;
+  background: transparent url(i/play.svg) no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
