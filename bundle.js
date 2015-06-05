@@ -208,7 +208,7 @@
 	      style = {zoom: 1 / devicePixelRatio};
 	
 	    return (
-	        React.createElement("div", {className: classes, 
+	        React.createElement("div", {className: classes, style: style, 
 	             key: this.props.id, 
 	             onTouchEnd: this.onClick, 
 	             onClick: this.onClick}, 
