@@ -620,6 +620,53 @@
 	  });
 	}
 	
+	function getOrganizationData(q) {
+	  var API = 'http://mobile.yamobile.yandex.net/search/onewizard?ver=1&text=';
+	  var MAX_IMAGE_WIDTH = 200;
+	  return new Promise(function(resolve, reject) {
+	    var url = API + q;
+	    if (PROXY)
+	      url = PROXY + encodeURI(url);
+	
+	    rest.requestJSON(url).then(function(data) {
+	      var answers = [];
+	      if (data && data.view && data.view.items) {
+	        var list = data.view.items.map(function(item) {
+	          if (item.organization) {
+	            var phone = '';
+	            if (item.phone) {
+	              phone = item.phone.phone.phone;
+	            }
+	            return {
+	              name: item.organization.name.text,
+	              address: item.organization.address.text,
+	              hours: item.organization.workingHours.text,
+	              phone: phone
+	            };
+	          }
+	          return null;
+	
+	          return item.items.map(function(item2) {
+	            if (item2['@type'] == 'ImageBlock' && item2.thumb) {
+	              return {
+	                thumb: item2.thumb.src,
+	                url: item2.image.src,
+	                width: item2.thumb.width,
+	                height: item2.thumb.height
+	              };
+	            }
+	            return null;
+	          });
+	        });
+	      }
+	      resolve(answers);
+	    }, function(err) {
+	      err && trace(err);
+	      resolve();
+	    });
+	  });
+	}
+	
 	module.exports = messages;
 
 
@@ -753,8 +800,7 @@
 	        var index = Math.floor(Math.random() * answers.length);
 	        var result = answers[index];
 	        if (result) {
-	          if (result.endsWith('.jpg') || result.endsWith('.png') ||
-	              result.endsWith('.gif'))
+	          if (/\.jpg|png|gif$/.test(result))
 	            resolve([{image: result}]);
 	          else if (URL.hasScheme(result))
 	            resolve([{link: result}]);
