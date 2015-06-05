@@ -160,20 +160,24 @@ input {
 .message_with_image,
 .message_with_video {
   padding: 0;
+  background-color: transparent;
 }
 .message_with_image {
   display: inline-block;
 }
-
-.message_first_image {
+.message__image {
+  border-radius: 20px;
+}
+.message_first_image,
+.message_first_image .message__image {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-.message_last_image {
+.message_last_image,
+.message_last_image .message__image {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
-
 .message_with_image .message__tail,
 .message_with_video .message__tail {
   display: none;
