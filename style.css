@@ -90,6 +90,7 @@ input {
 .messages {
   display: block;
   padding: 12px;
+  position: relative;
 }
 
 .message {
@@ -100,17 +101,27 @@ input {
   margin: 2px 0 0;
   box-sizing: border-box;
   background-color: #e5e5ea;
-  margin-bottom: 0;
-  overflow: hidden;
   position: relative;
   z-index: 1;
-  -webkit-transition: margin 200ms ease-out;
 }
 
-.message-enter {
-  margin-bottom: -40px;
+.message_enter {
+  margin-bottom: -48px;
 }
-.message-leave {
+.message_enter.message_enter_active {
+  margin-bottom: 0;
+  -webkit-transition: margin 200ms ease-out;
+}
+.message_enter2 {
+  opacity: 0;
+}
+.message_enter2.message_enter2_active {
+  opacity: 1;
+  -webkit-transition: opacity 200ms ease-out;
+}
+.message_leave {
+  position: absolute;
+  bottom: 12px;
 }
 
 .message_ours {
@@ -161,11 +172,14 @@ input {
 .message_with_video {
   padding: 0;
   background-color: transparent;
+  overflow: hidden;
 }
 .message_with_image {
+  zoom: .5;
   display: inline-block;
 }
-.message__image {
+.message__image,
+.message__video {
   border-radius: 20px;
 }
 .message_first_image,
@@ -196,4 +210,32 @@ input {
   left: 0;
   right: 0;
   margin: auto;
+}
+
+.message_snippet {
+  padding: 0;
+}
+.snippet_organization {
+  margin-bottom: 20px;
+  -webkit-margin-collapse: separate;
+}
+.snippet_organization .map {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+.snippet_organization .title {
+  font-size: 20px;
+  line-height: 30px;
+  color: rgba(0,0,0,1);
+}
+.snippet_organization span {
+  display: block;
+  color: rgba(0,0,0,.7);
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0 15px;
+}
+.snippet_organization .phone {
+  color: #429ef4;
+  text-decoration: underline;
 }
