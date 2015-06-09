@@ -23,6 +23,7 @@ input {
   position: fixed;
   width: 100%;
   bottom: 0;
+  height: 100%;
 }
 
 .toolbar {
@@ -32,7 +33,9 @@ input {
   display: -webkit-flex;
   -webkit-flex-flow: row nowrap;
   -webkit-align-items: center;
-  position: relative;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   z-index: 5;
 }
 
@@ -90,7 +93,14 @@ input {
 .messages {
   display: block;
   padding: 12px;
-  position: relative;
+  position: fixed;
+	-webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: -webkit-calc(100% - 45px);
+  width: 100%;
+  box-sizing: border-box;
+  bottom: 45px;
 }
 
 .message {
@@ -177,6 +187,7 @@ input {
 .message_with_image {
   zoom: .5;
   display: inline-block;
+  max-width: 30%;
 }
 .message__image,
 .message__video {
@@ -215,13 +226,18 @@ input {
 .message_snippet {
   padding: 0;
 }
+.snippet {
+  padding: 10px 15px;
+}
 .snippet_organization {
+  padding: 0;
   margin-bottom: 20px;
   -webkit-margin-collapse: separate;
 }
 .snippet_organization .map {
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
+  max-width: 100%;
 }
 .snippet_organization .title {
   font-size: 20px;
@@ -236,6 +252,10 @@ input {
   margin: 0 15px;
 }
 .snippet_organization .phone {
+  display: block;
+  margin: 0 15px;
   color: #429ef4;
+  font-size: 16px;
+  line-height: 24px;
   text-decoration: underline;
 }
