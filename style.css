@@ -259,3 +259,24 @@ input {
   line-height: 24px;
   text-decoration: underline;
 }
+
+.snippet_widget {
+  border-radius: 20px;
+  width: 200px;
+  height: 100px;
+  text-align: center;
+  padding: 0;
+}
+.snippet_widget:before {
+  display: inline-block;
+  height: 100%;
+  content: '';
+  vertical-align: middle;
+}
+.snippet_widget .logo {
+  max-width: 50%;
+  vertical-align: middle;
+}
+.message_snippet_widget .message__tail {
+  display: none;
+}
